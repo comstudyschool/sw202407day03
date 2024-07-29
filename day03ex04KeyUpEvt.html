@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function() {
+            var memoTxt = document.getElementById('memoTxt');
+
+            var demo = document.querySelector('#demo');
+            var clickBtn = document.querySelector('#clickBtn');
+            var resetBtn = document.querySelector('#resetBtn');
+
+            // 자바스크립트는 변수에 함수를 참조 시킬 수 있다.
+            // 함수는 재활용 가능.
+            var handleEvent = function(event) {
+                //console.dir(event);
+                demo.innerHTML += "<br>" + memoTxt.value;
+                memoTxt.value = "";
+                memoTxt.focus();
+            }
+            clickBtn.addEventListener('click', handleEvent);
+
+            // Enter키를 누르면 메모를 텍스트로 변경.
+            // 1. memoTxt 인풋에 키이벤트 핸들러
+            //  (이벤트 핸들러 속성은 onXxx)
+            // 2. Enter키인지 확인
+            // 3. Enter키라면 데이터 처리
+
+            /*
+            elemmet.onkeyup = function(event) { ... }
+            대신 다음과 같이 사용 가능 onXxx에서 on 접두어를 빼고 이벤트 이름만 사용.
+            element.addEventListener('keyup', function(event){ ... });
+            */
+            memoTxt.onkeyup = function() {
+                // function 함수에서는 this가 이벤트가 발생한 객체이다.
+                // 화살표 함수에서 this는 객체 자신
+                // console.log(memoTxt == this);
+                //console.log(memoTxt.value);
+                // 이벤트 핸들러 안에서 event객체는 자동생성
+                // 그러나 event 매개변수를 직접 선언하는 것이 안전하다.
+                //console.log(event.target.value);
+                //console.dir(event.keyCode);
+                if(event.keyCode === 13) {
+                    // == 대충 비슷한거 === 타입까지 완전히 똑같은거
+                    // 55 == '55' true
+                    // 55 === '55' false
+
+                    // 이벤트 핸들러 함수를 호출 한다.
+                    handleEvent(event);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    메모: <input type="text" id="memoTxt" value="안녕 세계">
+    <p id="demo">JavaScript can change HTML content.</p>
+
+    <!-- 인터널 방식 적용 -->
+    <button type="button" id="clickBtn">Click</button>
+    <button type="button" id="resetBtn">Reset</button>
+</body>
+</html>

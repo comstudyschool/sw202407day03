@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload=function() {
+            var memoTxt = document.getElementById('memoTxt');
+            var demo = document.querySelector('#demo');
+            var clickBtn = document.querySelector('#clickBtn');
+            var resetBtn = document.querySelector('#resetBtn');
+
+            var handleEvent = function(event) {
+                demo.innerHTML += "<br>" + memoTxt.value;
+                memoTxt.value = "";
+                memoTxt.focus();
+            }
+            clickBtn.addEventListener('click', handleEvent);
+
+            memoTxt.onkeyup = function() {
+                if(event.keyCode === 13) {
+                    handleEvent(event);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Todo List</h1>
+    메모: <input type="text" id="memoTxt" value="안녕 세계"> 
+    <button type="button" id="clickBtn">Click</button>
+    <button type="button" id="resetBtn">Reset</button>
+    <hr>
+    <table id="demo" width="550" border="1">
+        <tr>
+            <th>확인</th>
+            <th>할일</th>
+            <th>수정</th>
+            <th>삭제</th>
+        </tr>
+        <tr align="center">
+            <td><input type="checkbox"></td>
+            <td>개 밥 주기</td>
+            <td><button>수정</button></td>
+            <td><button>삭제</button></td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+    자바스크립트는 인터프리터 언어(C언어는 컴파일)
+    - 컴파일은 번역에 비유
+    - 인터프리터는 통역에 비유
+    -->
+    <script>
+        // 자바스크립트에서는 모든 요소가 객체이다.
+        //var num = 100;
+        //console.log(num.valueOf());
+
+        // 이벤트 핸들러를 이용해서 문서의 모든 요소가 로드되면 실행
+        // 자바스크립트 진입점
+        //window.addEventListener('load', function() {});
+        window.onload = function() {
+            console.dir(window.document.body);
+            // id 값으로 태그 엘리먼트를 객체로 참조.
+            var demo = document.getElementById('demo');
+            var clickBtn = document.getElementById('clickBtn');
+            var resetBtn = document.getElementById('resetBtn');
+            //console.log(demo);
+            //console.log(changeBtn);
+            //console.log(resetBtn);
+            // 버튼에 클릭 이벤트 핸들러를 추가해서 내용이 변경 되도록하기
+            clickBtn.onclick = function() {
+                console.log("클릭되었다!");
+                demo.innerHTML="<h2>버튼이 클릭 되었다!</h2>";
+                document.body.bgColor = "pink";
+            }
+            resetBtn.onclick = function() {
+                demo.innerHTML="JavaScript can change HTML content.";
+                document.body.bgColor = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    
+    <p id="demo">JavaScript can change HTML content.</p>
+
+    <!-- 인터널 방식 적용 -->
+    <button type="button" id="clickBtn">Click</button>
+    <button type="button" id="resetBtn">Reset</button>
+    
+    
+</body>
+</html>
