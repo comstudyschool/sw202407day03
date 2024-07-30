@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>초등학교 저학년용 계산기</h1>
+    <form action="">
+        <fieldset>
+            <legend>계산기</legend>
+            <input type="text" size="2" value="7"  class="hang1">
+            <select name="" id="oper">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+            <input type="text" size="2" value="10" class="hang2">
+            <button class="resultBtn">=</button>
+            <span class="resultArea">0</span>
+        </fieldset>
+    </form>
+
+    <script>
+        // getElementsByClassName()은 리턴형이 리스트(HtmlCollection) 형태이다.
+        var hang1 = document.getElementsByClassName('hang1')[0];
+        // querySelectorAll()이나 querySelector()는 CSS 선택기를 그대로 사용.
+        var hang2 = document.querySelectorAll('.hang2')[0];
+        var resultBtn = document.querySelector('.resultBtn');
+        var resultArea = document.querySelector('.resultArea');
+        var oper = document.getElementById('oper');
+
+        // 계산기를 직접 구현 해 봅니다.
+        // 초등학교 저학용 용이므로 음수가 나오지 않게 구현하세요.
+        resultBtn.addEventListener('click', function(event) {
+            event.preventDefault(); // form의 기본 기능을 잠시 중단한다.
+            // var a = parseInt(hang1.value);
+            // var b = parseInt(hang2.value);
+            // var c = oper.value;
+            // var resultValue = 0;
+            // switch(c) {
+            //     case '+': resultValue = a + b; break;
+            //     case '-': 
+            //         if(a > b) {
+            //             resultValue = a - b; 
+
+            //         } else {
+            //             resultValue = b - a; 
+            //         }
+            //         break;
+            //     case '*': resultValue = a * b; break;
+            //     case '/': resultValue = a / b; break;
+            // }
+            // resultArea.innerHTML = resultValue;
+            
+            console.log(hang1.value + oper.value + hang2.value);
+            resultArea.innerHTML = eval(hang1.value + oper.value + hang2.value);
+        });
+    </script>
+</body>
+</html>
