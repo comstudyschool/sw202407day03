@@ -17,15 +17,15 @@
         </tr>
     <% 
         // 이 부분은 자바스크립트 문법
-        for(var i=0; i<saraList.length; i++) {
+        saramList.forEach(function(saram) {
     %>
         <tr align="center">
-            <td>101</td>
-            <td>홍길동</td>
-            <td>hong@saram.com</td>
+            <td><%= saram.no %></td>
+            <td><a href="/saram/detail?no=<%= saram.no %>"><%= saram.name %></a></td>
+            <td><%= saram.email %></td>
         </tr>
     <%
-        }
+        });
     %>
     </table>
 </body>

@@ -12,11 +12,11 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 // 사람 데이터 목록 선언
-const saraList = [
-    {no:102, name:'홍길동', email:'hong@saram.com'},
-    {no:103, name:'이길동', email:'lee@saram.com'},
-    {no:103, name:'김길순', email:'kim@saram.com'},
-    {no:104, name:'박길순', email:'park@saram.com'}
+const saramList = [
+    {no:102, name:'홍길동', email:'hong@saram.com', job:'도둑'},
+    {no:101, name:'이길동', email:'lee@saram.com', job:'변호사'},
+    {no:103, name:'김길순', email:'kim@saram.com', job:'프로그래머'},
+    {no:104, name:'박길순', email:'park@saram.com', job:'군인'}
 ];
 
 // localhost:8000/saram
@@ -25,7 +25,22 @@ app.get('/saram', function(req, res) {
     // - views/saram.ejs 페이지의 코드를 읽어와서 res.end()에 적용한다.
 
     var message = "사람 정보 관리 페이지";
-    req.app.render('saram', {message, saraList}, function(err, html) {
+    req.app.render('saram', {message, saramList}, function(err, html) {
+        res.end(html);
+    });
+});
+
+// localhost:8000/saram/detail?no=103
+app.get('/saram/detail', function(req, res) {
+    console.log("GET - /saram/detail >>>> no: " + req.query.no);
+    var idx = saramList.findIndex(function(saram) {
+        return saram.no == req.query.no;
+    });
+    var saram = null;
+    if(idx != -1) {
+        saram = saramList[idx];
+    }
+    req.app.render('saramDetail', {saram}, function(err, html) {
         res.end(html);
     });
 });
