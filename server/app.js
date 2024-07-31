@@ -59,6 +59,12 @@ app.get('/saram/edit', function(req, res) {
     });
 });
 
+app.get('/saram/update', function(req, res) {
+    console.log("GET - /saram/update >>> ", req.query);
+    // saramList에서 해당 정보를 찾아서 update 하기.
+    res.send(req.query);
+});
+
 const server = http.createServer(app);
 server.listen(port, function() {
     console.log("서버 실행 중 >>> http://localhost:"+port);
