@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header {
+            border: 0px solid gray;
+            width: 1000px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        ul {
+            margin: auto;
+            border: 0px solid red;
+            padding: 0;
+            /* height 속성을 주지 않고 overflow 설정 */
+            /* height: 40px; */
+            overflow: hidden;
+            width: 600px;
+        }
+        div ul li {
+            width: 120px;
+            height: 50px;
+            border: 0px solid black;
+            text-align: center;
+            list-style: none;
+            float: left;
+            box-sizing: border-box;
+            line-height: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        nav {
+            border-bottom: 1px solid red;
+        }
+        div ul li:hover {
+            border-bottom: 2px solid red;
+            font-weight: bold;
+            color: red;
+        }
+        #main {
+            width: 1000px;
+            margin: auto;
+        }
+        #main div {
+            height: 100vh;
+            text-align: center;
+            border: 1px solid orange;
+        }
+        div.sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            padding: 5px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>범준샘의 소프트웨어 공작실</h1>
+    </header>
+    <div class="sticky">
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#lecture">Lecture</a></li>
+                <li><a href="#shop">Shop</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="main">
+        <div id="home">
+            <br><br>
+            <h3>오신것을 환영합니다</h3>
+        </div>
+        <div id="profile">
+            <br><br>
+            <h3>Profile</h3>
+        </div>
+        <div id="gallery">
+            <br><br>
+            <h3>Gallery</h3>
+        </div>
+        <div id="lecture">
+            <br><br>
+            <h3>Lecture</h3>
+        </div>
+        <div id="shop">
+            <br><br>
+            <h3>Shop</h3>
+        </div>
+    </div>
+</body>
+</html>
