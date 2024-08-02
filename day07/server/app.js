@@ -4,10 +4,13 @@ const app = express();
 const path = require('path');
 // npm i -S body-parser
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 app.set('views', path.join(__dirname, 'views') );
 app.set('view engine', 'ejs');
 app.set('port', 3000);
+
+app.use(cors());
 
 // bodyParser 미들웨어 지정 - POST방식의 파라미터 사용 가능.
 // parse application/x-www-form-urlencoded

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Todo List</h1>
+    <button id="loadBtn">목록 불러오기</button>
+    <ul id="todoListArea"></ul>
+
+    <script>
+        const myAjax = function(method, url, callback) {
+            const xhr = new XMLHttpRequest();
+            xhr.onload = callback;
+            xhr.open(method, url);
+            xhr.send();
+        }
+
+        document.querySelector("#loadBtn").addEventListener('click', function() {
+            // onload 이벤트 핸들러를 콜백으로 사용.
+            myAjax("GET", "http://localhost:3000/todo", function(event) {
+                var xhr = event.target;
+                var todoList = JSON.parse(xhr.responseText.trim());
+                console.log(todoList);
+
+                const todoListArea = document.querySelector('#todoListArea');
+                todoList.forEach(todo => {
+                    const liElement = document.createElement("li");
+                    liElement.innerHTML = todo.title;
+                    todoListArea.appendChild(liElement);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jQuery CDN 라이브러리 -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+</head>
+<body>
+
+    <h1>Todo List</h1>
+    <button id="loadBtn">목록 불러오기</button>
+    <ul id="todoListArea"></ul>
+
+    <script>
+        // 다른 라이브러리의 Ajax기능으로 대체하기
+        // jQuery라이브러리의 $.ajax(), $.getJson(), $.get(), $.post() 사용.
+        // axios 라이버리
+        // fetch() ...
+
+        document.querySelector("#loadBtn").addEventListener('click', function() {
+            $.ajax({
+                method: "GET",
+                url: "http://localhost:3000/todo", 
+                success: function(data, status, xhr) {
+                    var xhr = event.target;
+                    var todoList = data;
+                    console.log(todoList);
+
+                    const todoListArea = document.querySelector('#todoListArea');
+                    todoList.forEach(todo => {
+                        const liElement = document.createElement("li");
+                        liElement.innerHTML = todo.title;
+                        todoListArea.appendChild(liElement);
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
